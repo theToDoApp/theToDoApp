@@ -3,26 +3,32 @@ import Animated, {
   withTiming,
   useSharedValue,
   useAnimatedStyle,
+  useDerivedValue,
 } from 'react-native-reanimated';
+import {useWindowDimensions} from 'react-native';
 
 import styles from './index.style';
 import useSideMenuToggle from '../../hooks/useSideMenuToggle';
 import SideMenuHeader from './SideMenuHeader';
+import SideMenuList from './SideMenuList';
 
 const SideMenu = () => {
-  const width = useSharedValue(0);
   const [isOpened] = useSideMenuToggle();
+  const width = useSharedValue(0);
+  const {width: screenWidth} = useWindowDimensions();
+
+  const translationX = useDerivedValue(() => {
+    return screenWidth * width.value;
+  });
 
   const animatedStyles = useAnimatedStyle(() => {
     return {
-      width: `${width.value}%`,
-      paddingLeft: width.value * 0.2,
-      paddingRight: width.value * 0.2,
+      transform: [{translateX: -translationX.value}],
     };
   });
 
   useEffect(() => {
-    width.value = withTiming(isOpened ? 100 : 0);
+    width.value = withTiming(isOpened ? 1 : 0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpened]);
 
@@ -33,6 +39,7 @@ const SideMenu = () => {
         image="https://www.kasandbox.org/programming-images/avatars/purple-pi.png"
         title="Project Manager"
       />
+      <SideMenuList />
     </Animated.View>
   );
 };
