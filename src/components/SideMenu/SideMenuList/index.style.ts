@@ -14,6 +14,9 @@ const styles = StyleSheet.create({
     color: Colors.textGrey,
     marginLeft: 20,
   },
+  activeText: {
+    color: Colors.textYellow,
+  },
 });
 
 export default styles;
