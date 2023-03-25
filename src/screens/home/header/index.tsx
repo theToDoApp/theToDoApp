@@ -7,7 +7,7 @@ import {Icon, Colors} from '../../../assets';
 import useSideMenuToggle from '../../../hooks/useSideMenuToggle';
 
 const Notification: React.FC<{hasNew?: boolean}> = ({hasNew = false}) => (
-  <VectorIcon size={25} color={Colors.gray} name="ios-notifications-outline" />
+  <VectorIcon size={25} color={Colors.grey} name="ios-notifications-outline" />
 );
 
 const MenuButton = () => {
