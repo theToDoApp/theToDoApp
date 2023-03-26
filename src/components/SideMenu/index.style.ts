@@ -3,7 +3,7 @@ import {Colors} from '../../assets';
 
 const styles = StyleSheet.create({
   root: {
-    width: '100%',
+    width: 0,
     height: '100%',
     backgroundColor: Colors.background,
     position: 'absolute',
