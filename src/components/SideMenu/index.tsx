@@ -26,15 +26,13 @@ const SideMenu = () => {
 
   const animatedStyles = useAnimatedStyle(() => {
     return {
-      width: '100%',
-      transform: [{translateX: -translationX.value}],
+      transform: [{translateX: translationX.value}],
     };
   });
 
   useEffect(() => {
-    translationRatio.value = withTiming(isOpened ? 0 : 1);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpened]);
+    translationRatio.value = withTiming(isOpened ? 1 : 0);
+  }, [isOpened, translationRatio]);
 
   const gestureHandler = useAnimatedGestureHandler({
     onStart: _ => {

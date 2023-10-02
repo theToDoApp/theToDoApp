@@ -3,10 +3,11 @@ import {Colors} from '../../assets';
 
 const styles = StyleSheet.create({
   root: {
-    width: 0,
+    width: '100%',
     height: '100%',
     backgroundColor: Colors.background,
     position: 'absolute',
+    left: '-100%',
     paddingTop: 100,
     paddingLeft: 20,
     paddingRight: 20,
